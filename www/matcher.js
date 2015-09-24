@@ -10,10 +10,11 @@
 
 var matcher = {
     config: {
-        file: 'http://extras.denverpost.com/app/preps/prep_lookup.js',
-        lookup_object: 'preps_schools'
-        //section: ''
+        dir: 'http://extras.denverpost.com/app/nounmatch/lookup/',
+        dir: 'lookup/',
+        section: 'broncos'
     },
+    lookup: {},
     update_config: function (config) {
         // Take an external config object and update this config object.
         for ( var key in config )
@@ -33,7 +34,7 @@ var matcher = {
             this.update_config(matcher_config);
         }
 
-        return $.getScript(this.config.file, function()
+        return $.getScript(this.config.dir + this.config.file, function()
         {
             $('#articleBody p, #articleBody td').each( function() { 
               var results = $(this).text().match(matcher.regex);
@@ -46,15 +47,15 @@ var matcher = {
                 for ( var i = 0; i < count; i++ )
                 {
                     item = results[i].trim()
-                  if ( preps_schools.hasOwnProperty(item) )
+                  if ( matcher.lookup.hasOwnProperty(item) )
                   {
                     // Replace the first instance of the text with the linked text,
                     // then remove the lookup from the object so we don't link it again.
-                    $(this).html($(this).html().replace(item, '<a href="' + preps_schools[item] + '">' + item + '</a>'));
+                    $(this).html($(this).html().replace(item, '<a href="' + matcher.lookup[item] + '">' + item + '</a>'));
 
                     // We only want to link the name once,
                     // so we remove it from the lookup when we're done.
-                    delete(preps_schools[item]);
+                    delete(matcher.lookup[item]);
                   }
                 }
               }
