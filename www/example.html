@@ -80,7 +80,9 @@
 <script>
 // MATCHER
 var matcher_config = {
-
+    elements: 'p',
+    dir: 'lookup/',
+    section: 'broncos'
 };
 
 var p;
@@ -99,8 +101,6 @@ $.getScript(p + "matcher.js", function() { matcher.init(); });
       if ( check == true ) return 'YES';
       return 'NO';
     };
-    if ( iframe !== 1 )
-    {
     analyticsEvent = function() {};
     analyticsSocial = function() {};
     analyticsVPV = function() {};
@@ -144,7 +144,6 @@ $.getScript(p + "matcher.js", function() { matcher.init(); });
     "URL": "",
     "Page Title": ""
     });
-    }
   </script>
   <!-- End Google Tag Manager Data Layer -->
 <!-- Google Tag Manager --><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TLFP4R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
@@ -174,8 +173,6 @@ $.getScript(p + "matcher.js", function() { matcher.init(); });
         </script>
     </div>
     <script type="text/javascript">
-    if ( iframe !== 1 )
-    {
         //Chartbeat stuff
         _sf_async_config.uid = 2671;
         _sf_async_config.domain = 'denverpost.com';
@@ -193,7 +190,6 @@ $.getScript(p + "matcher.js", function() { matcher.init(); });
             var oldonload = window.onload;
             window.onload = (typeof window.onload != 'function') ? loadChartbeat : function() { oldonload(); loadChartbeat(); };
         })();
-    }
     </script>
     <p>Copyright &copy; 2015 <a href="http://www.denverpost.com/">The Denver Post</a></p>
     <p>
@@ -204,16 +200,6 @@ $.getScript(p + "matcher.js", function() { matcher.init(); });
         &bull; <a href="http://www.denverpost.com/sudoku">Sudoku</a>
     </p>
     </footer>
-    <script>
-        if ( iframe === 1 )
-        {
-            $('h1, h2, #intro, footer').remove();
-        }
-        if ( section === 1 )
-        {
-            $('section').remove();
-        }
-    </script>
 </body>
 </html>
 
