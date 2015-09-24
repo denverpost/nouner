@@ -12,6 +12,7 @@ var matcher = {
     config: {
         dir: 'http://extras.denverpost.com/app/nounmatch/lookup/',
         dir: 'lookup/',
+        elements: '#articleBody p, #articleBody td',
         section: 'broncos'
     },
     lookup: {},
@@ -34,9 +35,9 @@ var matcher = {
             this.update_config(matcher_config);
         }
 
-        return $.getScript(this.config.dir + this.config.file, function()
+        $.getScript(this.config.dir + this.config.file, function()
         {
-            $('#articleBody p, #articleBody td').each( function() { 
+            $(matcher.config.elements).each( function() { 
                 var results = $(this).text().match(matcher.regex);
 
                 if ( results !== null )
