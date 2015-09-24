@@ -1,6 +1,11 @@
 # NounMatch
 Given a lookup object and a chunk of text, link any matching proper nouns within the text
 
+## Usage
+Look at www/include.html for the js in use on production.
+
+Look at www/example.html for a bare-bones implementation.
+
 ## Performance Considerations
 In addition to the extra JS being downloaded on the page, every time the noun-matcher runs  it:
 
