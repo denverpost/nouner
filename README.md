@@ -1,6 +1,14 @@
 # NounMatch
 Given a lookup object and a chunk of text, link any matching proper nouns within the text
 
+## Performance Considerations
+In addition to the extra JS being downloaded on the page, every time the noun-matcher runs  it:
+
+1. Loops through each paragraph.
+2. Pulls out all the proper nouns in each paragraph.
+3. Loops through those proper nouns and looks to see if any of those match the proper nouns we have in our list.
+4. If there's a match, it replaces that proper noun with a piece of linked text.
+
 # License
 Copyright (c) 2015 The Denver Post
 
