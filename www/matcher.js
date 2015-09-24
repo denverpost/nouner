@@ -37,28 +37,28 @@ var matcher = {
         return $.getScript(this.config.dir + this.config.file, function()
         {
             $('#articleBody p, #articleBody td').each( function() { 
-              var results = $(this).text().match(matcher.regex);
+                var results = $(this).text().match(matcher.regex);
 
-              if ( results !== null )
-              {
-                
-                var count = results.length;
-                var item;
-                for ( var i = 0; i < count; i++ )
+                if ( results !== null )
                 {
-                    item = results[i].trim()
-                  if ( matcher.lookup.hasOwnProperty(item) )
-                  {
-                    // Replace the first instance of the text with the linked text,
-                    // then remove the lookup from the object so we don't link it again.
-                    $(this).html($(this).html().replace(item, '<a href="' + matcher.lookup[item] + '">' + item + '</a>'));
 
-                    // We only want to link the name once,
-                    // so we remove it from the lookup when we're done.
-                    delete(matcher.lookup[item]);
-                  }
+                    var count = results.length;
+                    var item;
+                    for ( var i = 0; i < count; i++ )
+                    {
+                        item = results[i].trim()
+                        if ( matcher.lookup.hasOwnProperty(item) )
+                        {
+                            // Replace the first instance of the text with the linked text,
+                            // then remove the lookup from the object so we don't link it again.
+                            $(this).html($(this).html().replace(item, '<a href="' + matcher.lookup[item] + '">' + item + '</a>'));
+
+                            // We only want to link the name once,
+                            // so we remove it from the lookup when we're done.
+                            delete(matcher.lookup[item]);
+                        }
+                    }
                 }
-              }
 
             });
         });
