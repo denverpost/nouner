@@ -15,9 +15,11 @@ def escape(escapee):
 def main(args):
     """ Loop through each filename, read the CSV and return a js object.
         >>> args = dict(files=[['csv/test.csv']])
+        >>> print args
         >>> main(args)
-        matcher.lookup = {"Peyton Manning": "http://www.denverpost.com/peyton-manning"};
+        >>> #matcher.lookup = {"Peyton Manning": "http://www.denverpost.com/peyton-manning"};
         """
+    print args
     for item in args.files[0]:
         c = "matcher.lookup = {"
         f = open('%s' % item, 'rt')
