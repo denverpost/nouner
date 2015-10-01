@@ -7,6 +7,14 @@
 //  'Cherry Creek': 'http://preps.denverpost.com/schools/cherry-creek/10/',
 //  'The Denver Post': 'http://www.denverpost.com/'
 // }
+//
+// REGEXEs
+// Matches proper nouns
+// \b([A-Z][a-z]+)\s(([A-Z][a-z]+)\s?)+\b
+//
+// Matches proper nouns with multiple capitalizations and periods, i.e.
+// LeSean McCoy and A.C. Newman.
+// \b([A-Z]\.?[A-Z]?\.?[a-z]*[A-Z]?[a-z]*)\s(([A-Z][a-z]+)\s?)+\b
 
 var matcher = {
     config: {
@@ -25,7 +33,7 @@ var matcher = {
             }
         }
     },
-    regex: new RegExp(/\b([A-Z][a-z]+)\s(([A-Z][a-z]+)\s?)+\b/gm),
+    regex: new RegExp(/\b([A-Z]\.?[A-Z]?\.?[a-z]*[A-Z]?[a-z]*)\s(([A-Z][a-z]+)\s?)+\b/gm),
     match: function() {
         $(this.config.elements).each( function() { 
             var results = $(this).text().match(matcher.regex);
