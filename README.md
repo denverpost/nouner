@@ -6,6 +6,16 @@ Look at www/include.html for the js in use on production.
 
 Look at www/example.html for a bare-bones implementation.
 
+## Updating the lookups
+The current workflow has plenty of room for improvement:
+
+First, download the Google Sheet as a CSV. Then:
+```
+cd www
+cp ~/Downloads/Sports\ Lookups\ -\ broncos.csv csv/broncos.csv
+python csvtojs.py csv/broncos.csv > lookup/broncos.js
+```
+
 ## Performance Considerations
 In addition to the extra JS being downloaded on the page, every time the noun-matcher runs  it:
 
