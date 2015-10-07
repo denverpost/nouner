@@ -1,4 +1,4 @@
-# NounMatch
+# Nouner
 Given a lookup object and a chunk of text, link any matching proper nouns within the text
 
 ## Usage
@@ -25,7 +25,7 @@ In addition to the extra JS being downloaded on the page, every time the noun-ma
 4. If there's a match, it replaces that proper noun with a piece of linked text.
 
 # License
-Copyright (c) 2015 The Denver Post
+Copyright © 2015 The Denver Post
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
