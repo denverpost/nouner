@@ -1,4 +1,3 @@
-var elem = {}
 // Look up proper nouns in an article against a lookup table of proper nouns to URLs.
 // If there's a match, link the proper noun to the URL.
 // Uses jQuery.
