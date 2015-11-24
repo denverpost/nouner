@@ -1,3 +1,4 @@
+var elem = {}
 // Look up proper nouns in an article against a lookup table of proper nouns to URLs.
 // If there's a match, link the proper noun to the URL.
 // Uses jQuery.
@@ -36,7 +37,24 @@ var matcher = {
     regex: new RegExp(/\b([A-Z]\.?[A-Z]?\.?[a-z]*[A-Z]?[a-z]*)\s(([A-Z][a-z]+)\s?)+\b/gm),
     match: function() {
         $(this.config.elements).each( function() { 
-            var results = $(this).text().match(matcher.regex);
+
+            var text = $(this).text();
+
+            // Remove all existing links, we don't want to link those.
+            // To do this we loop through the element's child nodes, and if the child's
+            // an anchor node we take the linked text and remove it from the text var.
+            elem = this
+            i = this.children.length;
+            while ( i > 0 )
+            {
+                if ( this.children[i - 1].hasOwnProperty('localName') && this.children[i - 1].localName === 'a' )
+                {
+                    text = text.replace(this.children[i].innerText);
+                }
+                i --;
+            }
+
+            var results = text.match(matcher.regex);
 
             if ( results !== null )
             {
