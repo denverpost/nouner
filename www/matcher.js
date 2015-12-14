@@ -37,8 +37,9 @@ var matcher = {
     match: function() {
         $(this.config.elements).each( function() { 
 
-            var text = $(this).text();
+            var text = $(this).html();
 
+            // IN CASE OF EXISTING LINKS
             // Remove all existing links, we don't want to link those.
             // To do this we loop through the element's child nodes, and if the child's
             // an anchor node we take the linked text and remove it from the text var.
@@ -46,9 +47,9 @@ var matcher = {
             i = this.children.length;
             while ( i > 0 )
             {
-                if ( this.children[i - 1].hasOwnProperty('localName') && this.children[i - 1].localName === 'a' )
+                if ( this.children[i - 1].localName === 'a' )
                 {
-                    text = text.replace(this.children[i].innerText);
+                    text = text.replace(this.children[i - 1].innerText);
                 }
                 i --;
             }
