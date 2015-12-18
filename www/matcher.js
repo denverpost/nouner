@@ -38,7 +38,6 @@ var matcher = {
         $(this.config.elements).each( function() { 
 
             var text = $(this).html();
-console.log(text);
 
             // IN CASE OF EXISTING LINKS
             // Remove all existing links, we don't want to link those.
@@ -50,10 +49,12 @@ console.log(text);
             {
                 if ( this.children[i - 1].localName === 'a' )
                 {
-                    text = text.replace(this.children[i - 1].innerText);
+                    text = text.replace(this.children[i - 1].innerText, '');
                 }
                 i --;
             }
+            text = $('<p>' + text + '</p>').text();
+
 
             var results = text.match(matcher.regex);
 
@@ -69,6 +70,8 @@ console.log(text);
                     {
                         // Replace the first instance of the text with the linked text,
                         // then remove the lookup from the object so we don't link it again.
+                        // THE PROBLEM IS WE'RE SEARCHING THE MARKUP NOT JUST THE TEXT AND SOMETIMES
+                        // THE MARKUP CONTAINS HIDDEN ELEMENTS THAT HAVE PROPER NOUNS
                         $(this).html($(this).html().replace(item, '<a href="' + matcher.lookup[item] + '">' + item + '</a>'));
 
                         // We only want to link the name once,
