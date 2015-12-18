@@ -85,7 +85,16 @@ var matcher = {
                         // BUT, if first pos html != last pos html, and first pos text == last pos text, and first pos text !== first pos html,
                         // THEN WE HAVE TEXT WE WOULD BE HYPERLINKING IN AN ELEMENT'S ATTRIBUTE.
                         // When that happens, we replace the last element not the first.
-                        $(this).html($(this).html().replace(item, '<a href="' + matcher.lookup[item] + '">' + item + '</a>'));
+                        var firsthtml = $(this).html().indexOf(item), lasthtml = $(this).html().lastIndexOf(item), firsttext = text.indexOf(item), lasttext = text.lastIndexOf(item);
+                        if ( firsthtml != lasthtml && firsttext == lasttext && firsttext !== firsthtml )
+                        {
+                            // This regex allows us to replace against the last instance of the item.
+                            // If there are more than two instances of the proper noun and the actual textual one
+                            // is in the middle, we are SCREWED.
+                            var pattern = new RegExp(item + "(?!.*" + item + ")");
+                            $(this).html($(this).html().replace(pattern, '<a href="' + matcher.lookup[item] + '">' + item + '</a>'));
+                        }
+                        else $(this).html($(this).html().replace(item, '<a href="' + matcher.lookup[item] + '">' + item + '</a>'));
 
                         // We only want to link the name once,
                         // so we remove it from the lookup when we're done.
