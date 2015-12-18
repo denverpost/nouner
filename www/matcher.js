@@ -38,6 +38,7 @@ var matcher = {
         $(this.config.elements).each( function() { 
 
             var text = $(this).html();
+console.log(text);
 
             // IN CASE OF EXISTING LINKS
             // Remove all existing links, we don't want to link those.
