@@ -70,8 +70,21 @@ var matcher = {
                     {
                         // Replace the first instance of the text with the linked text,
                         // then remove the lookup from the object so we don't link it again.
+                        // Also make sure the instance we're replacing is text and not markup.
                         // THE PROBLEM IS WE'RE SEARCHING THE MARKUP NOT JUST THE TEXT AND SOMETIMES
-                        // THE MARKUP CONTAINS HIDDEN ELEMENTS THAT HAVE PROPER NOUNS
+                        // THE MARKUP CONTAINS HIDDEN ELEMENTS THAT HAVE PROPER NOUNS.
+                        console.log($(this).html().indexOf(item), $(this).html().lastIndexOf(item), text.indexOf(item), text.lastIndexOf(item), item);
+                        // We compare the position of the item in the html vs. the text, and we also
+                        // look up the last position of the item in the hmtl and the text.
+                        // We do this because proper nouns are sometimes in chunk of markup more than once,
+                        // and some of those times the proper nouns are in attributes of elements in the markup.
+                        // Yea, this sounds weird.
+                        // SO: If all these values are equal, the item's in there once.
+                        // If first position html == first position text, and last position html == last position text,
+                        // the item's in the text more than once and that's okay.
+                        // BUT, if first pos html != last pos html, and first pos text == last pos text, and first pos text !== first pos html,
+                        // THEN WE HAVE TEXT WE WOULD BE HYPERLINKING IN AN ELEMENT'S ATTRIBUTE.
+                        // When that happens, we replace the last element not the first.
                         $(this).html($(this).html().replace(item, '<a href="' + matcher.lookup[item] + '">' + item + '</a>'));
 
                         // We only want to link the name once,
