@@ -9,3 +9,5 @@
  * License: MIT
  */
 
+// NOTE: We also have to figure out which lookup table to use.
+// http://extras.denverpost.com/app/nouner/matcher.js
