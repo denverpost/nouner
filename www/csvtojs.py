@@ -14,14 +14,15 @@ def escape(escapee):
 
 def main(args):
     """ Loop through each filename, read the CSV and return a js object.
-        >>> args = build_parser(['csv/test.csv'])
+        >>> args = build_parser(['--verbose', 'csv/test.csv'])
         >>> print args.files[0]
         ['csv/test.csv']
         >>> main(args)
-        Namespace(files=[['csv/test.csv']], verbose=False)
+        Namespace(files=[['csv/test.csv']], verbose=True)
         matcher.lookup = {"Peyton Manning": "http://www.denverpost.com/peyton-manning"};
         """
-    print args
+    if args.verbose:
+        print args
     for item in args.files[0]:
         c = "matcher.lookup = {"
         f = open('%s' % item, 'rt')
@@ -44,7 +45,7 @@ def main(args):
 
 def build_parser(args):
     """ A method to make arg parsing testable.
-        >>> args = build_parser(['-v', '-v'])
+        >>> args = build_parser(['--verbose'])
         >>> print args.verbose
         True
         >>> print args.files[0]
