@@ -65,6 +65,35 @@
 <h1>Nouner Bookmarklet</h1>
     <p>Note: Don't use 'em in visual mode.</p>
 
+<textarea id="content" style="width:100%; height: 400px;">
+The  <a href="http://www.denverpost.com/broncos/ci_29236908/danny-trevathan-t-j-ward-out-c-j" title="Brandon Marshall Title Tag">loss of Danny Trevathan (concussion)</a> for Sunday's game against <strong>Oakland</strong> has created a ripple effect on the Broncos' inside linebacking corps. Second-year linebacker Todd Davis will start, but he will take the job of Brandon Marshall, who will shift to the weak side in place of Trevathan.
+
+While the move may appear minor on paper, it creates a new set of responsibilities and assignments for Marshall, who played on the weak side last season, when the Broncos were in the 4-3 defense.
+
+Jay Cutler runs from criticism in the NFL. Especially teams that don't Jay Cutler well. The Broncos forged back-to-back steel gut victories, but did little to silence doubts about their blended Jay Cutler.
+
+After two weeks of Eli Manning, many fans are asking if it's time to return to last year's attack. Go three wide, let it fly and make sure the Arabian gelding Thunder has an oxygen mask for <a href="#" title="Eli Manning">touchdown sprints</a>.
+
+Broncos coach Gary Kubiak remains committed to running the football, seeking a physical identity and mindset. He is not advocating three yards and a cloud of, um,  rust. And Peyton Manning is not interested in throwing 45 times a game.
+
+Therein lie the seeds of compromise.
+
+Two brilliant offensive minds continue to tinker to find the right fit. The idea of rushing more in a shotgun formation offers a potential solution.
+
+"Running the ball out of the shotgun, to be honest, is a challenge at times. But if that's something you're doing best, you've got to find a way to run it that way," Kubiak said. "It's not something you talk about and go do. It's something you work at all the time."
+
+"Our goal since the offseason is to try to keep improving. It's not one particular phase. Everybody wants to play better," Manning said, adding, "I am motivated to because I want to do my job to help my team win (not quiet critics)."
+
+Manning, who didn't throw Wednesday as part of the plan to give him a weekly rest day, remains a maestro at the line of scrimmage, capable of recognizing any weakness in a defense.  However for audibles to work, everyone has to hear and see the same thing. The zone-blocking scheme requires the linemen to move together, meaning they function properly if they are either all right or all wrong.
+
+"We all <em>know how</em> to run the ball," <a href="#">right tackle Ryan Harris said</a>. "We have to execute better, really focus on our techniques and really be honest with ourselves in film study."
+
+Reviving the running game creates options, forces the defense to make tougher decisions. As it stands, opponents have used exotic looks and stunts to attack a one-dimensional Broncos' offense, sacking Manning seven times. He was sacked 17 times last season.
+
+"If we are  able to run 50 percent of the time,   then those guys can't really tee off on Peyton," receiver Demaryius Thomas said. "If all they are worried about is the pass, all they are going to do is blitz. When the defensive ends have to read the run and pass, it's difficult. Same for the secondary as well."
+
+The Broncos won't abandon the run. And they will continue to work off Manning's strengths. It's a challenge to marry the two concepts. The answer might lie in a shotgun wedding.
+</textarea>
 <script>
 var content = jQuery('#content');
 var grafs = content.text().split('\n\n');
@@ -72,7 +101,7 @@ var len = grafs.length;
 var editing = true;
 var section_id = prompt('Enter 1 for Broncos, 2 for Nuggets, 3 for Avs, 4 for Rockies, 5 for Preps, 6 for Rapids 7 for colleges', '');
 var section = 'broncos';
-else if ( section_id.indexOf('1') >= 0 ) { section = 'broncos'; }
+if ( section_id.indexOf('1') >= 0 ) { section = 'broncos'; }
 else if ( section_id.indexOf('2') >= 0 ) { section = 'nuggets'; }
 else if ( section_id.indexOf('3') >= 0 ) { section = 'avs'; }
 else if ( section_id.indexOf('4') >= 0 ) { section = 'rockies'; }
@@ -80,9 +109,6 @@ else if ( section_id.indexOf('5') >= 0 ) { section = 'preps'; }
 else if ( section_id.indexOf('6') >= 0 ) { section = 'rapids'; }
 else if ( section_id.indexOf('7') >= 0 ) { section = 'colleges'; }
 
-while ( editing == true ) {
-}
-jQuery('#content').text(grafs.join('\n\n'));
 // MATCHER
 var matcher_config = {
     elements: 'p',
@@ -93,7 +119,8 @@ var matcher_config = {
 var p;
 p = "";
 //p = "http://extras.denverpost.com/app/preps/";
-$.getScript(p + "matcher.js", function() { matcher.init(); });
+jQuery.getScript(p + "matcher.js", function() { matcher.init(); });
+jQuery('#content').text(grafs.join('\n\n'));
 </script>
 
 
@@ -161,34 +188,16 @@ $.getScript(p + "matcher.js", function() { matcher.init(); });
 })
 (window,document,'script','dataLayer','GTM-TLFP4R');
 </script><!-- End Google Tag Manager -->
-        <div id='dfp-20' style="margin-bottom:10px;">
-            <script type='text/javascript'>
-                googletag.defineSlot('/8013/denverpost.com/News',[[300,250],[300,600],[160,600],[300,1050]], 'dfp-20').addService(googletag.pubads()).setTargeting('pos',['Cube1_RRail_ATF']).setTargeting('kv','sports');                                          
-                googletag.pubads().enableSyncRendering();
-                googletag.enableServices();                                         
-                googletag.display('dfp-20');
-        </script>
-    </div>
-    <div id='dfp-21' style="margin-bottom:10px;">
-        <script type='text/javascript'>
-            googletag.defineSlot('/8013/denverpost.com/News',[[300,250]], 'dfp-21').addService(googletag.pubads()).setTargeting('pos',['Cube2_RRail_mid']).setTargeting('kv','sports');
-            googletag.pubads().enableSyncRendering();
-            googletag.enableServices();                                         
-            googletag.display('dfp-21');
-        </script>
-    </div>
     <script type="text/javascript">
         //Chartbeat stuff
         _sf_async_config.uid = 2671;
         _sf_async_config.domain = 'denverpost.com';
-        _sf_async_config.sections = 'broncos,sports,data';
+        _sf_async_config.sections = 'broncos,sports,data,';
         _sf_async_config.useCanonical = true;
         (function(){
             function loadChartbeat() {
                 window._sf_endpt=(new Date()).getTime();
                 var e = document.createElement('script');
-                e.setAttribute('language', 'javascript');
-                e.setAttribute('type', 'text/javascript');
                 e.setAttribute('src','//static.chartbeat.com/js/chartbeat.js');
                 document.body.appendChild(e);
             }
