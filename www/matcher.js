@@ -34,17 +34,20 @@ var matcher = {
         }
     },
     regex: new RegExp(/\b([A-Z]\.?[A-Z]?\.?[a-z]*[A-Z]?[a-z]*)\s(([A-Z][a-z]+)\s?)+\b/gm),
+    match_graf: function() {
+        // Take one paragraph and replace the proper nouns in it.
+    },
     match: function() {
         if ( typeof this.config.elements == 'string' ) this.config.elements = jQuery(this.config.elements);
         this.config.elements.each( function() { 
 
             var text = $(this).html();
+            console.log(text);
 
             // IN CASE OF EXISTING LINKS
             // Remove all existing links, we don't want to link those.
             // To do this we loop through the element's child nodes, and if the child's
             // an anchor node we take the linked text and remove it from the text var.
-            elem = this
             i = this.children.length;
             while ( i > 0 )
             {
@@ -114,10 +117,15 @@ var matcher = {
         {
             this.update_config(matcher_config);
         }
+        this.config.elements_type = typeof this.config.elements;
 
         jQuery.getScript(this.config.dir + this.config.section + ".js", function()
         {
-            matcher.match();
+            if ( matcher.config.elements_type === 'string' ) matcher.match();
+            else if ( typeof matcher.config.elements.length !== 'undefined' )
+            {
+                // We've got an array or an object to loop through
+            }
         });
         
     }
