@@ -29,6 +29,7 @@ var matcher = {
         {
             if ( config.hasOwnProperty(key) )
             {
+                //console.log(key, config[key]);
                 this.config[key] = config[key];
             }
         }
@@ -38,11 +39,11 @@ var matcher = {
         // Take one paragraph and replace the proper nouns in it.
     },
     match: function() {
+        // The elements may be an array, the elements may be a string.
         if ( typeof this.config.elements == 'string' ) this.config.elements = jQuery(this.config.elements);
         this.config.elements.each( function() { 
 
-            var text = $(this).html();
-            console.log(text);
+            var text = jQuery(this).text();
 
             // IN CASE OF EXISTING LINKS
             // Remove all existing links, we don't want to link those.
@@ -115,7 +116,7 @@ var matcher = {
         // Config handling. External config objects must be named matcher_config
         if ( typeof window.matcher_config !== 'undefined' )
         {
-            this.update_config(matcher_config);
+            this.update_config(window.matcher_config);
         }
         this.config.elements_type = typeof this.config.elements;
 
@@ -125,6 +126,7 @@ var matcher = {
             else if ( typeof matcher.config.elements.length !== 'undefined' )
             {
                 // We've got an array or an object to loop through
+                matcher.match()
             }
         });
         
