@@ -9,8 +9,8 @@ Look at www/example.html for a bare-bones implementation.
 ## Updating the lookups
 The current workflow has plenty of room for improvement:
 
-First, download the Google Sheet as a CSV. Then:
-```
+First, download the Google Sheet as a CSV (from the tab of the sheet you're updating: File --> Download As --> CSV). Then:
+```bash
 cd www
 cp ~/Downloads/Sports\ Lookups\ -\ broncos.csv csv/broncos.csv
 python csvtojs.py csv/broncos.csv > lookup/broncos.js
@@ -28,7 +28,7 @@ In addition to the extra JS being downloaded on the page, every time the noun-ma
 4. If there's a match, it replaces that proper noun with a piece of linked text.
 
 # License
-Copyright © 2015-2016 The Denver Post
+Copyright © 2015-2017 The Denver Post
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
